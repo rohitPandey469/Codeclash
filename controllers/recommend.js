@@ -10,6 +10,7 @@ const getPlaceDetails = async (placeName) => {
 
     const response = await axios.get(apiUrl);
 
+    console.log("Response",response)
     if (response.data.status === "OK") {
       const placeDetails = response.data.candidates[0];
       console.log("Place Details", placeDetails);
