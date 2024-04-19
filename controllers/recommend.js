@@ -1,5 +1,5 @@
-const API_KEY = process.env.API_KEY
-const axios = require("axios")
+const API_KEY = process.env.API_KEY;
+const axios = require("axios");
 
 const getPlaceDetails = async (placeName) => {
   try {
@@ -12,7 +12,7 @@ const getPlaceDetails = async (placeName) => {
 
     if (response.data.status === "OK") {
       const placeDetails = response.data.candidates[0];
-      console.log("Place Details", placeDetails)
+      console.log("Place Details", placeDetails);
       return {
         name: placeDetails?.name,
         address: placeDetails?.formatted_address,
@@ -32,13 +32,14 @@ const getPlaceDetails = async (placeName) => {
 };
 
 const getRecommendations = async (req, res) => {
+  console.log("Get recoomendations", req.body);
   const { persons, budget, days } = req.body;
   const maxi = budget / (persons * days);
   const places = [
     { name: "Kanpur", maxBudget: 5000 },
     { name: "Jaipur", maxBudget: 10000 },
     { name: "Goa", maxBudget: 15000 },
-    { name: "Dehradun", maxBudget: 11000 }
+    { name: "Dehradun", maxBudget: 11000 },
   ];
 
   const filteredPlaces = places
