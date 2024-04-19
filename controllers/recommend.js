@@ -44,6 +44,10 @@ const getRecommendations = async (req, res) => {
     { name: "Mumbai", minBudget: 15000 },
     { name: "Goa", minBudget: 11000 },
     { name: "San Francisco", minBudget: 25000 },
+    { name: "Kanpur", minBudget: 12000 },
+    { name: "Kolkata", minBudget: 9000 },
+    { name: "Hawaii", minBudget: 25000 },
+    { name: "Pune", minBudget: 2000 },
   ];
 
   const filteredPlaces = places
