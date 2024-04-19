@@ -5,7 +5,7 @@ const getPlaceDetails = async (placeName) => {
   try {
     const apiKey = API_KEY;
     const apiUrl = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${encodeURIComponent(
-      "Mumbai"
+      placeName
     )}&inputtype=textquery&fields=name,formatted_address,rating,price_level,user_ratings_total,photos,opening_hours&key=${apiKey}`;
 
     const response = await axios.get(apiUrl);
@@ -40,14 +40,14 @@ const getRecommendations = async (req, res) => {
   const { persons, budget, days } = req.body;
   const maxi = budget / (persons * days);
   const places = [
-    { name: "Kanpur", maxBudget: 5000 },
-    { name: "Jaipur", maxBudget: 10000 },
-    { name: "Goa", maxBudget: 15000 },
-    { name: "Dehradun", maxBudget: 11000 },
+    { name: "Washington", minBudget: 5000 },
+    { name: "Mumbai", minBudget: 15000 },
+    { name: "Goa", minBudget: 11000 },
+    { name: "San Francisco", minBudget: 25000 },
   ];
 
   const filteredPlaces = places
-    .filter((place) => maxi < place.maxBudget)
+    .filter((place) => maxi >= place.minBudget)
     .map(({ name }) => name);
 
   const result = [];
