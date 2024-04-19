@@ -10,7 +10,7 @@ const getPlaceDetails = async (placeName) => {
 
     const response = await axios.get(apiUrl);
 
-    console.log("Response",response)
+    console.log("Response", response);
     if (response.data.status === "OK") {
       const placeDetails = response.data.candidates[0];
       console.log("Place Details", placeDetails);
@@ -23,6 +23,9 @@ const getPlaceDetails = async (placeName) => {
         openingHours: placeDetails?.opening_hours,
         photos: placeDetails?.photos,
       };
+    } else if (response.data.status === "ZERO_RESULTS") {
+      console.log("No place details found for", placeName);
+      return null;
     } else {
       throw new Error("Place details not found");
     }
