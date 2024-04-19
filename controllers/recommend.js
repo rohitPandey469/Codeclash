@@ -5,7 +5,7 @@ const getPlaceDetails = async (placeName) => {
   try {
     const apiKey = API_KEY;
     const apiUrl = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${encodeURIComponent(
-      placeName
+      "Mumbai"
     )}&inputtype=textquery&fields=name,formatted_address,rating,price_level,user_ratings_total,photos,opening_hours&key=${apiKey}`;
 
     const response = await axios.get(apiUrl);
